@@ -1,5 +1,6 @@
 
 
+
 //CRIAÇÃO DE ELEMENTOS
 function novoElemento(tagName, className) {
     const elem = document.createElement(tagName)
@@ -79,18 +80,27 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
 function Passaro(alturaJogo) {
     let voando = false
 
-    
+
     this.elemento = novoElemento('img', 'passaro')
+
+
     this.elemento.src = './imgs/passaro.png'
-
-
 
     this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
     this.setY = y => this.elemento.style.bottom = `${y}px`
 
-     
-    window.ontouchstart= e => voando = true  
-    window.ontouchend= e => voando = false
+    //   document.getElementById('btn').addEventListener('touchstart', e )
+    //   document.getElementById('btn').addEventListener('touchend', e )
+    //     function e(ev){
+    //         console.log(ev)
+    //     }
+
+    window.ontouchstart = e => voando = true
+    window.onmousedown = e => voando =true
+
+    window.ontouchend = e => voando = false
+    window.onmouseup = e => voando =false
+    
 
     this.animar = () => {
         const novoY = this.getY() + (voando ? 8 : -5)
@@ -112,6 +122,14 @@ function Passaro(alturaJogo) {
     this.setY(alturaJogo / 2)
 
 }
+
+
+this.vo = document.getElementById('a')
+this.vo = () => {
+    console.log('a')
+}
+
+
 
 
 
@@ -187,7 +205,7 @@ function FlappyBird() {
             barreiras.animar()
             passaro.animar()
 
-            if(colidiu(passaro, barreiras)){
+            if (colidiu(passaro, barreiras)) {
                 clearInterval(temporizador)
             }
 
