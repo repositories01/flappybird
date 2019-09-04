@@ -18,7 +18,7 @@ function Barreira(reversa = false) {
 
     this.setAltura = altura => corpo.style.height = `${altura}px`
 }
-
+// teste
 // const b = new Barreira(true)
 // b.setAltura(300)
 // document.querySelector('[wm-flappy]').appendChild(b.elemento)
@@ -46,7 +46,7 @@ function ParDeBarreiras(altura, abertura, x) {
     this.sortearAbertura()
     this.setX(x)
 }
-
+// teste
 // const b = new ParDeBarreiras(700, 200, 800)
 // document.querySelector('[wm-flappy]').appendChild(b.elemento)
 
@@ -89,11 +89,7 @@ function Passaro(alturaJogo) {
     this.getY = () => parseInt(this.elemento.style.bottom.split('px')[0])
     this.setY = y => this.elemento.style.bottom = `${y}px`
 
-    //   document.getElementById('btn').addEventListener('touchstart', e )
-    //   document.getElementById('btn').addEventListener('touchend', e )
-    //     function e(ev){
-    //         console.log(ev)
-    //     }
+
 
     window.ontouchstart = e => voando = true
     window.onmousedown = e => voando =true
