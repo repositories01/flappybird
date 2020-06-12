@@ -58,7 +58,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
         new ParDeBarreiras(altura, abertura, largura + espaco * 3)
     ]
 
-    const deslocamento = 3
+    var deslocamento = 4
     this.animar = () => {
         this.pares.forEach(par => {
             par.setX(par.getX() - deslocamento)
@@ -92,10 +92,10 @@ function Passaro(alturaJogo) {
 
 
     window.ontouchstart = e => voando = true
-    window.onmousedown = e => voando =true
+    window.onkeydown = e => voando =true
 
     window.ontouchend = e => voando = false
-    window.onmouseup = e => voando =false
+    window.onkeyup = e => voando =false
     
 
     this.animar = () => {
@@ -120,10 +120,10 @@ function Passaro(alturaJogo) {
 }
 
 
-this.vo = document.getElementById('a')
-this.vo = () => {
-    console.log('a')
-}
+// this.vo = document.getElementById('a')
+// this.vo = () => {
+//     console.log('a')
+// }
 
 
 
@@ -138,18 +138,6 @@ function Progresso() {
     }
     this.atualizarPontos(0)
 }
-//TESTE
-// const barreiras = new Barreiras(700, 600, 300, 400)
-// const passaro = new Passaro(600)
-// const areaDoJogo = document.querySelector('[wm-flappy]')
-
-// areaDoJogo.appendChild(new Progresso().elemento)
-// areaDoJogo.appendChild(passaro.elemento)
-// barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
-// setInterval(() => {
-//     barreiras.animar()
-//     passaro.animar()
-// }, 40)
 
 
 
@@ -186,10 +174,10 @@ function FlappyBird() {
     const altura = areaDoJogo.clientHeight
     const largura = areaDoJogo.clientWidth
     const progresso = new Progresso()
-    const barreiras = new Barreiras(altura, largura, 250, 400,
+    const barreiras = new Barreiras(altura, largura, 330, 300,
         () => progresso.atualizarPontos(++pontos))
     const passaro = new Passaro(altura)
-
+    
     areaDoJogo.appendChild(progresso.elemento)
     areaDoJogo.appendChild(passaro.elemento)
     barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
@@ -203,6 +191,7 @@ function FlappyBird() {
 
             if (colidiu(passaro, barreiras)) {
                 clearInterval(temporizador)
+                return alert("GAME OVER... reinicie a tela")
             }
 
         }, 30)
