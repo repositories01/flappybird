@@ -1,6 +1,3 @@
-
-
-
 //CRIAÇÃO DE ELEMENTOS
 function novoElemento(tagName, className) {
     const elem = document.createElement(tagName)
@@ -18,10 +15,6 @@ function Barreira(reversa = false) {
 
     this.setAltura = altura => corpo.style.height = `${altura}px`
 }
-// teste
-// const b = new Barreira(true)
-// b.setAltura(300)
-// document.querySelector('[wm-flappy]').appendChild(b.elemento)
 
 function ParDeBarreiras(altura, abertura, x) {
     this.elemento = novoElemento('div', 'par-de-barreiras')
@@ -46,9 +39,7 @@ function ParDeBarreiras(altura, abertura, x) {
     this.sortearAbertura()
     this.setX(x)
 }
-// teste
-// const b = new ParDeBarreiras(700, 200, 800)
-// document.querySelector('[wm-flappy]').appendChild(b.elemento)
+
 
 function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     this.pares = [
@@ -70,8 +61,8 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
             }
 
             const meio = largura / 2
-            const cruzouOMeio = par.getX() + deslocamento >= meio
-                && par.getX() < meio
+            const cruzouOMeio = par.getX() + deslocamento >= meio &&
+                par.getX() < meio
             if (cruzouOMeio) notificarPonto()
         })
     }
@@ -92,11 +83,11 @@ function Passaro(alturaJogo) {
 
 
     window.ontouchstart = e => voando = true
-    window.onkeydown = e => voando =true
+    window.onkeydown = e => voando = true
 
     window.ontouchend = e => voando = false
-    window.onkeyup = e => voando =false
-    
+    window.onkeyup = e => voando = false
+
 
     this.animar = () => {
         const novoY = this.getY() + (voando ? 8 : -5)
@@ -120,17 +111,6 @@ function Passaro(alturaJogo) {
 }
 
 
-// this.vo = document.getElementById('a')
-// this.vo = () => {
-//     console.log('a')
-// }
-
-
-
-
-
-
-
 function Progresso() {
     this.elemento = novoElemento('span', 'progresso')
     this.atualizarPontos = pontos => {
@@ -145,11 +125,11 @@ function estaoSobrepostos(elementoA, elementoB) {
     const a = elementoA.getBoundingClientRect()
     const b = elementoB.getBoundingClientRect()
 
-    const horizontal = a.left + a.width >= b.left
-        && b.left + b.width >= a.left
+    const horizontal = a.left + a.width >= b.left &&
+        b.left + b.width >= a.left
 
-    const vertical = a.top + a.height >= b.top
-        && b.top + b.height >= a.top
+    const vertical = a.top + a.height >= b.top &&
+        b.top + b.height >= a.top
     return horizontal && vertical
 
 }
@@ -160,8 +140,8 @@ function colidiu(passaro, barreiras) {
         if (!colidiu) {
             const superior = parDeBarreiras.superior.elemento
             const inferior = parDeBarreiras.inferior.elemento
-            colidiu = estaoSobrepostos(passaro.elemento, superior)
-                || estaoSobrepostos(passaro.elemento, inferior)
+            colidiu = estaoSobrepostos(passaro.elemento, superior) ||
+                estaoSobrepostos(passaro.elemento, inferior)
         }
     })
     return colidiu
@@ -169,15 +149,15 @@ function colidiu(passaro, barreiras) {
 
 function FlappyBird() {
     let pontos = 0
-
+    const gameover = document.querySelector('.hidden');
     const areaDoJogo = document.querySelector('[wm-flappy]')
     const altura = areaDoJogo.clientHeight
     const largura = areaDoJogo.clientWidth
     const progresso = new Progresso()
-    const barreiras = new Barreiras(altura, largura, 330, 300,
+    const barreiras = new Barreiras(altura, largura, 300, 300,
         () => progresso.atualizarPontos(++pontos))
     const passaro = new Passaro(altura)
-    
+
     areaDoJogo.appendChild(progresso.elemento)
     areaDoJogo.appendChild(passaro.elemento)
     barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
@@ -191,7 +171,8 @@ function FlappyBird() {
 
             if (colidiu(passaro, barreiras)) {
                 clearInterval(temporizador)
-                return alert("GAME OVER... reinicie a tela")
+                gameover.classList.replace('hidden', 'gameover');
+
             }
 
         }, 30)
@@ -200,5 +181,3 @@ function FlappyBird() {
 }
 
 new FlappyBird().start()
-
-
