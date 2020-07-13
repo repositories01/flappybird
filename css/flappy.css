@@ -14,7 +14,7 @@
 
 .gameover {
     padding: 11rem;
-    position: relative;
+    position: absolute;
     font-family: 'Pixel';
     font-size: 5rem;
     display: flex;
