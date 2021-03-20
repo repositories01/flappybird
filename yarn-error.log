@@ -1,0 +1,57 @@
+Arguments: 
+  /home/thiago/.nvm/versions/node/v12.18.4/bin/node /usr/share/yarn/bin/yarn.js
+
+PATH: 
+  /home/thiago/.nvm/versions/node/v12.18.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/thiago/.rvm/bin:/home/thiago/Android/Sdk/emulator:/home/thiago/Android/Sdk/tools:/home/thiago/Android/Sdk/tools/bin:/home/thiago/Android/Sdk/platform-tools:/home/thiago/android-studio/bin:/home/thiago/.rvm/bin:/home/thiago/Android/Sdk/emulator:/home/thiago/Android/Sdk/tools:/home/thiago/Android/Sdk/tools/bin:/home/thiago/Android/Sdk/platform-tools:/home/thiago/android-studio/bin:/home/thiago/.rvm/bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  12.18.4
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/thiago/Documentos/flappybird/package.json: Unexpected token y in JSON at position 171
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:310:30)
+      at /usr/share/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "flappybird",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "scripts": {
+      "start": "webpack-dev-server"
+    },
+    "keywords": [],yar
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@babel/core": "^7.6.0",
+      "@babel/preset-env": "^7.6.0",
+      "babel-loader": "^8.0.6",
+      "css-loader": "^3.2.0",
+      "html-webpack-plugin": "^3.2.0",
+      "style-loader": "^1.0.0",
+      "webpack": "^4.40.2",
+      "webpack-cli": "^3.3.9",
+      "webpack-dev-server": "^3.8.1"
+    },
+    "dependencies": {
+      "haunted": "^4.5.4",
+      "lit-html": "^1.1.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
