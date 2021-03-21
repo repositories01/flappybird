@@ -1,2 +1,1 @@
-import './App'
-import './Title'
+import './Barrier/index'
